@@ -1,0 +1,50 @@
+﻿<common:NotifyPhoneApplicationPage
+    x:Class="Grimacizer7.Views.CreateProfile.CartoonCreator"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:common="clr-namespace:Grimacizer7.Common"
+    xmlns:converters="clr-namespace:Grimacizer7.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False"
+    shell:SystemTray.Opacity="0"
+    shell:SystemTray.ForegroundColor="Black">
+
+    <phone:PhoneApplicationPage.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <converters:InverseBooleanConverter x:Key="BoolInverse"/>
+    </phone:PhoneApplicationPage.Resources>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar>
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/refresh.png" IsEnabled="False" Text="reset" Click="Refresh_Click" />
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/next.png" IsEnabled="False" Text="next" Click="Next_Click" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+    <Grid Style="{StaticResource BackgroundImage}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Text="{Binding Message}"
+            HorizontalAlignment="Center"
+            Style="{StaticResource PhoneText2Style}"/>
+
+        <Grid Grid.Row="1">
+            <Image Source="{Binding ImageSource}"/>
+            <ProgressBar
+                IsIndeterminate="{Binding IsCalculating}"
+                Visibility="{Binding IsCalculating, Converter={StaticResource BoolToVis}}"/>
+        </Grid>
+    </Grid>
+</common:NotifyPhoneApplicationPage>

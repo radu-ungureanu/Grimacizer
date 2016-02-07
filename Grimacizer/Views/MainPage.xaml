@@ -1,0 +1,99 @@
+﻿<common:NotifyPhoneApplicationPage
+    x:Class="Grimacizer7.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:common="clr-namespace:Grimacizer7.Common"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="False"
+    shell:SystemTray.Opacity="0"
+    shell:SystemTray.ForegroundColor="Black">
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Mode="Minimized">
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem IsEnabled="True" Text="how to play" Click="HowToPlay_Click"/>
+                <shell:ApplicationBarMenuItem IsEnabled="True" Text="ranks" Click="Ranks_Click"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+    <Grid Style="{StaticResource BackgroundImage}">
+        <controls:Panorama>
+            <controls:Panorama.Title>
+                <StackPanel Orientation="Horizontal" Margin="0,25,0,-50" Tap="Profile_Tap">
+                    <toolkit:ContextMenuService.ContextMenu>
+                        <toolkit:ContextMenu IsZoomEnabled="False" Name="profileContext">
+                            <toolkit:MenuItem Header="edit profile" Click="EditProfile_Click"/>
+                        </toolkit:ContextMenu>
+                    </toolkit:ContextMenuService.ContextMenu>
+                    <Image 
+                        Source="/Assets/AppBar/overflowdots.png" 
+                        Margin="20,0,0,0" 
+                        Stretch="None">
+                        <Image.RenderTransform>
+                            <RotateTransform Angle="90"/>
+                        </Image.RenderTransform>
+                    </Image>
+                    <Image 
+                        Source="{Binding Cartoon}"
+                        Margin="-30,25,0,0"
+                        Height="130" Width="130"/>
+                    <TextBlock FontSize="150">
+                        <Run Text="Hi "/><Run Text="{Binding PlayerName}"/>
+                    </TextBlock>
+                </StackPanel>
+            </controls:Panorama.Title>
+
+            <controls:PanoramaItem Header="adventure" HeaderTemplate="{StaticResource PanoramaItemHeaderTemplate}">
+                <StackPanel>
+                    <Button Click="AdventurePlay_Click" Style="{StaticResource BorderlessButton}">
+                        <Image Source="/Assets/MainPage/adventure.png"/>
+                    </Button>
+                    <TextBlock Style="{StaticResource MainPageInfoTextStyle}">
+                        <Run Text="You are "/><Run Text="{Binding Adventure}"/><Run Text=" levels to go!"/>
+                    </TextBlock>
+                </StackPanel>
+            </controls:PanoramaItem>
+
+            <controls:PanoramaItem Header="survival" HeaderTemplate="{StaticResource PanoramaItemHeaderTemplate}">
+                <StackPanel>
+                    <Button IsEnabled="False" Click="SurvivalPlay_Click" Style="{StaticResource BorderlessButton}">
+                        <Image Source="/Assets/MainPage/survival.png"/>
+                    </Button>
+                    <TextBlock Style="{StaticResource MainPageInfoTextStyle}">
+                        <Run Text="You have "/><Run Text="{Binding Survival}"/><Run Text=" points!"/>
+                    </TextBlock>
+                </StackPanel>
+            </controls:PanoramaItem>
+
+            <controls:PanoramaItem Header="multiplayer" HeaderTemplate="{StaticResource PanoramaItemHeaderTemplate}">
+                <StackPanel>
+                    <Button IsEnabled="False" Click="MultiplayerPlay_Click" Style="{StaticResource BorderlessButton}">
+                        <Image Source="/Assets/MainPage/multiplayer.png"/>
+                    </Button>
+                    <TextBlock Style="{StaticResource MainPageInfoTextStyle}">
+                        <Run Text="Your score is "/><Run Text="{Binding MultiplayerWin}"/><Run Text=" - "/><Run Text="{Binding MultiplayerLose}"/><Run Text="!"/>
+                    </TextBlock>
+                </StackPanel>
+            </controls:PanoramaItem>
+
+            <controls:PanoramaItem Header="history" HeaderTemplate="{StaticResource PanoramaItemHeaderTemplate}">
+                <StackPanel>
+                    <Button Click="History_Click" Style="{StaticResource BorderlessButton}">
+                        <Image Source="/Assets/MainPage/history.png"/>
+                    </Button>
+                </StackPanel>
+            </controls:PanoramaItem>
+        </controls:Panorama>
+    </Grid>
+</common:NotifyPhoneApplicationPage>

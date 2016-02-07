@@ -1,0 +1,50 @@
+﻿<common:NotifyPhoneApplicationPage 
+    x:Class="Grimacizer7.Views.Other.HowToPlay"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:common="clr-namespace:Grimacizer7.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="False"
+    shell:SystemTray.Opacity="0"
+    shell:SystemTray.ForegroundColor="Black">
+
+    <Grid Style="{StaticResource BackgroundImage}">
+        <controls:Panorama Title="how to play" TitleTemplate="{StaticResource PanoramaHeaderTemplate}">
+            <controls:PanoramaItem Header="adventure" HeaderTemplate="{StaticResource PanoramaItemHeaderTemplate}">
+                <ScrollViewer>
+                    <TextBlock 
+                        TextWrapping="Wrap"
+                        Style="{StaticResource PhoneText2Style}"
+                        Text="-   You have: one picture to imitate, a 5 seconds timer and a camera that takes the photo of your grimace;&#x0a;- Goals:&#x0a;   •   Your main goal is to imitate the grimace you see. You have 5 seconds to prepare until the photo is taken&#x0a;   •   It is necessary for you to take the photos from almost the same distance so that you can pass the level&#x0a;   •   The first 2 levels are unlocked and in order to move on to the next level you have to win the second one&#x0a;   •   You have 5 lives available at the beginning of the game; if you don't pass a level you lose a life. Lifes are renewable from every 30 to 30 seconds."/>
+                </ScrollViewer>
+            </controls:PanoramaItem>
+
+            <controls:PanoramaItem Header="survival" HeaderTemplate="{StaticResource PanoramaItemHeaderTemplate}">
+                <ScrollViewer>
+                    <TextBlock 
+                        TextWrapping="Wrap"
+                        Style="{StaticResource PhoneText2Style}"
+                        Text="-   In the survival mode you can choose what difficulty you want to play;&#x0a;   •   On 'easy mode' a set of 5 random pictures are shown to you from 4 to 4 seconds and you have to do your best to precisely imitate them all; at the end your score will be calculated&#x0a;   •   On 'medium mode' a set of 5 random pictures are shown to you from 3 to 3 seconds&#x0a;   •   On 'insane mode' a set of 5 random pictures are shown to you from 2 to 2 seconds; you can play this mode only if you scored 75% in medium mode;"/>
+                </ScrollViewer>
+            </controls:PanoramaItem>
+
+            <controls:PanoramaItem Header="multiplayer" HeaderTemplate="{StaticResource PanoramaItemHeaderTemplate}">
+                <ScrollViewer>
+                    <TextBlock 
+                        TextWrapping="Wrap" 
+                        Style="{StaticResource PhoneText2Style}"
+                        Text="-   In the multiplayer mode you have the opportunity to beat a friend at grimacizing! Your score can be seen on a leader board / world rank and you can participate on weekly competitions."/>
+                </ScrollViewer>
+            </controls:PanoramaItem>
+        </controls:Panorama>
+    </Grid>
+</common:NotifyPhoneApplicationPage>

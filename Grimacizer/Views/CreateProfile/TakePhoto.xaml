@@ -1,0 +1,53 @@
+﻿<common:NotifyPhoneApplicationPage
+    x:Class="Grimacizer7.Views.CreateProfile.TakePhoto"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:common="clr-namespace:Grimacizer7.Common"
+    xmlns:converters="clr-namespace:Grimacizer7.Converters"
+    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="480"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="LandscapeLeft"
+    shell:SystemTray.IsVisible="False"
+    shell:SystemTray.Opacity="0"
+    shell:SystemTray.ForegroundColor="Black">
+
+    <phone:PhoneApplicationPage.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <converters:BooleanInverseToVisibilityConverter x:Key="BoolInverseToVis"/>
+    </phone:PhoneApplicationPage.Resources>
+    
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+    <Grid Style="{StaticResource BackgroundImage}">
+        <Grid Visibility="{Binding PictureIsTaken, Converter={StaticResource BoolInverseToVis}}">
+            <Grid Name="cameraGrid">
+                <Grid.Background>
+                    <VideoBrush x:Name="viewfinderBrush" />
+                </Grid.Background>
+                <Border 
+                    CornerRadius="7" 
+                    Margin="70,70" 
+                    BorderBrush="#FF008FC5" 
+                    BorderThickness="5"/>
+            </Grid>
+            <TextBlock
+                Text="{Binding ErrorMessage}"
+                HorizontalAlignment="Left"
+                FontSize="24"
+                FontWeight="ExtraBold"/>
+        </Grid>
+
+        <Image
+            Source="{Binding ImageSource}"
+            Visibility="{Binding PictureIsTaken, Converter={StaticResource BoolToVis}}"/>
+    </Grid>
+</common:NotifyPhoneApplicationPage>

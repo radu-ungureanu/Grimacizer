@@ -1,0 +1,38 @@
+﻿<common:NotifyPhoneApplicationPage
+    x:Class="Grimacizer7.Views.Other.Ranks"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:common="clr-namespace:Grimacizer7.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False"
+    shell:SystemTray.Opacity="0"
+    shell:SystemTray.ForegroundColor="Black">
+
+    <Grid Style="{StaticResource BackgroundImage}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock
+                Text="Rankings" 
+                Margin="9,-7,0,0" 
+                Style="{StaticResource PhoneText1Style}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Margin="12,0,12,0">
+            <TextBlock Text="Local Rankings :" Style="{StaticResource PhoneText2Style}"/>
+            <TextBlock TextWrapping="Wrap" Text="Global Rankings :" Style="{StaticResource PhoneText2Style}"/>
+        </StackPanel>
+    </Grid>
+
+</common:NotifyPhoneApplicationPage>

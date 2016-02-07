@@ -1,0 +1,40 @@
+﻿<common:NotifyPhoneApplicationPage
+    x:Class="Grimacizer7.Views.CreateProfile.ProfileCreated"
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Toolkit"
+    xmlns:local="clr-namespace:Grimacizer7.Utils"
+    xmlns:common="clr-namespace:Grimacizer7.Common"
+    xmlns:converters="clr-namespace:Grimacizer7.Converters"
+    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="480"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="LandscapeLeft"
+    shell:SystemTray.IsVisible="False"
+    shell:SystemTray.Opacity="0"
+    shell:SystemTray.ForegroundColor="Black">
+
+    <phone:PhoneApplicationPage.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <converters:InverseBooleanConverter x:Key="BoolInverse"/>
+    </phone:PhoneApplicationPage.Resources>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar>
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/back.png" IsEnabled="False" Text="back" Click="Back_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/next.png" IsEnabled="False" Text="next" Click="Next_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+    <Grid Style="{StaticResource BackgroundImage}">
+        <Image Source="{Binding ImageSource}"/>
+        <ProgressBar 
+            IsIndeterminate="{Binding IsCalculating}"
+            Visibility="{Binding IsCalculating, Converter={StaticResource BoolToVis}}"/>
+    </Grid>
+</common:NotifyPhoneApplicationPage>

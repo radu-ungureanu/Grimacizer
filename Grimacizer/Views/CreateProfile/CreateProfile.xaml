@@ -1,0 +1,73 @@
+﻿<common:NotifyPhoneApplicationPage
+    x:Class="Grimacizer7.Views.CreateProfile.CreateProfile"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:common="clr-namespace:Grimacizer7.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="Black"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False"
+    shell:SystemTray.Opacity="0"
+    shell:SystemTray.ForegroundColor="Black">
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar>
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/next.png" IsEnabled="True" Text="next" Click="Next_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+    <Grid Style="{StaticResource BackgroundImage}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="12,17,0,28">
+            <TextBlock Text="Welcome!" Style="{StaticResource PhoneText1Style}"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Margin="12,40,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Choose your name:" Style="{StaticResource PhoneText2Style}" />
+                    <TextBox
+                        Background="Transparent" 
+                        BorderBrush="Black"
+                        Foreground="Black"
+                        common:Binder.IsAutoUpdate="True" 
+                        common:Binder.RealTimeText="{Binding Path=PlayerName, Mode=TwoWay}"
+                        InputScope="PersonalFullName"/>
+                </StackPanel>
+                
+                <StackPanel>
+                    <TextBlock Text="Choose your gender:" Style="{StaticResource PhoneText2Style}" />
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton Name="male" Content="Male" IsChecked="true"/>
+                        <RadioButton Name="female" Content="Female"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Choose your race:" Style="{StaticResource PhoneText2Style}" />
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton Name="caucasian" Content="Caucasian" IsChecked="true"/>
+                        <RadioButton Name="african" Content="African"/>
+                        <RadioButton Name="asian" Content="Asian"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+</common:NotifyPhoneApplicationPage>

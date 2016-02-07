@@ -1,0 +1,74 @@
+﻿<common:NotifyPhoneApplicationPage 
+    x:Class="Grimacizer7.Views.SavedPictures.ShareFacebook"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:common="clr-namespace:Grimacizer7.Common"
+    xmlns:converters="clr-namespace:Grimacizer7.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="False"
+    shell:SystemTray.Opacity="0"
+    shell:SystemTray.ForegroundColor="Black">
+
+    <phone:PhoneApplicationPage.Resources>
+        <converters:InverseBooleanConverter x:Key="InverseBool"/>
+        <converters:BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </phone:PhoneApplicationPage.Resources>
+    
+    <Grid Style="{StaticResource BackgroundImage}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Orientation="Horizontal" Margin="12,17,0,28">
+            <Image
+                Source="/Assets/Application/fb.png"
+                Height="50"/>
+            <TextBlock 
+                Text="Share on facebook" 
+                Style="{StaticResource PhoneText2Style}"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Margin="12,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <TextBlock 
+                    Text="Share your thoughts:"
+                    Style="{StaticResource PhoneText3Style}"/>
+                <TextBox
+                    Foreground="Black"
+                    Height="150" 
+                    Text="{Binding Message, Mode=TwoWay}"
+                    IsEnabled="{Binding IsCalculating, Converter={StaticResource InverseBool}}"/>
+                <Button 
+                    Content="Post"
+                    Click="Post_Click"
+                    BorderBrush="Black"
+                    Foreground="Black"
+                    IsEnabled="{Binding IsCalculating, Converter={StaticResource InverseBool}}"/>
+            </StackPanel>
+        </Grid>
+        <ProgressBar 
+            Foreground="Black"
+            Grid.Row="1"
+            IsIndeterminate="{Binding IsCalculating}"
+            Visibility="{Binding IsCalculating, Converter={StaticResource BoolToVis}}"/>
+        <phone:WebBrowser 
+            Name="Browser"
+            Grid.RowSpan="2"
+            Visibility="{Binding BrowserVisibility}"
+            Navigated="BrowserNavigated"/>
+    </Grid>
+</common:NotifyPhoneApplicationPage>
